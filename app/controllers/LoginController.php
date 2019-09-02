@@ -23,6 +23,10 @@ class LoginController extends \Phalcon\Mvc\Controller
             } else if ($this->security->checkToken() && $this->security->checkHash($password, $user->password)) {
                 // The user is authenticated send them to the homepage
                 $fullname = $user->first_name . " " . $user->last_name;
+                $this->session->set('auth', [
+                    'username' => $user->username, 
+                    'fullname' => $fullname
+                ]);
                 $this->session->set('fullname', $fullname);
                 $this->session->set('user', $user);
                 $this->flash->success("Welcome " . $fullname);

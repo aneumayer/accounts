@@ -1,3 +1,6 @@
 <div class="page-header">
     <h1>Account Manager</h1>
 </div>
+<?php if (isset($fullname)): ?>
+    <p>Wellcome <?= $fullname ?>!</p>
+<?php endif; ?>
