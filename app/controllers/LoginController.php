@@ -17,18 +17,18 @@ class LoginController extends \Phalcon\Mvc\Controller
             ]);
             
             // Verify if the password is a match for the hash in the database
-            if ($user == false) {
+            if (!$this->security->checkToken()) {
+                $this->flash->error("An error occured while attempting to log in.");
+
+            } else if (!($user && $this->security->checkHash($password, $user->password))) {
                 $this->flash->error("Username and password do not match.");
 
-            } else if ($this->security->checkToken() && $this->security->checkHash($password, $user->password)) {
+            } else {
                 // The user is authenticated send them to the homepage
                 $fullname = $user->first_name . " " . $user->last_name;
                 $this->session->set('fullname', $fullname);
                 $this->session->set('user', $user);
                 return $this->response->redirect('');
-
-            } else {
-                $this->flash->error("An error occured while attempting to log in.");
             }
         }
     }
