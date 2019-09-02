@@ -25,8 +25,8 @@ class LoginController extends \Phalcon\Mvc\Controller
                 $fullname = $user->first_name . " " . $user->last_name;
                 $this->session->set('fullname', $fullname);
                 $this->session->set('user', $user);
-                $this->flash->success("Welcome back " . $fullname);
-                return $this->dispatcher->forward(["controller" => "index", "action" => "index"]);
+                $this->flash->success("Welcome " . $fullname);
+                return $this->response->redirect('');
 
             } else {
                 $this->flash->error("An error occured while attempting to log in.");

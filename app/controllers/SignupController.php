@@ -40,7 +40,7 @@ class SignupController extends \Phalcon\Mvc\Controller
                 } else {
                     // The user is authenticated send them to the homepage
                     $this->flash->success("Welcome " . $fullname);
-                    return $this->dispatcher->forward(["controller" => "index", "action" => "index"]);
+                    return $this->response->redirect('');
                 }
             }
             
