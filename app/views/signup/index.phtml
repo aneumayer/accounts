@@ -1,14 +1,15 @@
-<?php if (isset($alert)): ?>
-    <div class="alert alert-<?= $alert['type'] ?>" role="alert">
-        <?= $alert['message'] ?>
-    </div>
-<?php endif; ?>
+
 <main class="login-form">
     <div class="cotainer">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Sign Up</div>
+                        <?php if (isset($alert)): ?>
+                            <div class="alert alert-<?= $alert['type'] ?>" role="alert">
+                                <?= $alert['message'] ?>
+                            </div>
+                        <?php endif; ?>
                         <div class="card-body">
                             <form action="" method="post">
                             <div class="form-group row">
@@ -38,9 +39,11 @@
                                 <div class="form-group row">
                                     <label for="password2" class="col-md-4 col-form-label text-md-right">Re-type Password</label>
                                     <div class="col-md-6">
-                                        <input type="password2" id="password2" class="form-control" name="password2" required>
+                                        <input type="password" id="password2" class="form-control" name="password2" required>
                                     </div>
                                 </div>
+                                <input type='hidden' name='<?php echo $this->security->getTokenKey() ?>'
+                                    value='<?php echo $this->security->getToken() ?>'/>
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
                                         Sign Up

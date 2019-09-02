@@ -1,14 +1,14 @@
-<?php if (isset($alert)): ?>
-    <div class="alert alert-<?= $alert['type'] ?>" role="alert">
-        <?= $alert['message'] ?>
-    </div>
-<?php endif; ?>
 <main class="login-form">
     <div class="cotainer">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Log In</div>
+                        <?php if (isset($alert)): ?>
+                            <div class="alert alert-<?= $alert['type'] ?>" role="alert">
+                                <?= $alert['message'] ?>
+                            </div>
+                        <?php endif; ?>
                         <div class="card-body">
                             <form action="" method="post">
                                 <div class="form-group row">
@@ -23,6 +23,8 @@
                                         <input type="password" id="password" class="form-control" name="password" required>
                                     </div>
                                 </div>
+                                <input type='hidden' name='<?php echo $this->security->getTokenKey() ?>'
+                                    value='<?php echo $this->security->getToken() ?>'/>
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
                                         Log In

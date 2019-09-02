@@ -15,14 +15,17 @@ class LoginController extends \Phalcon\Mvc\Controller
                 'bind'       => ['username'=> $username]
             ]);
             // Verify if the password is a match for the hash in the database
-            if ($user && password_verify($password, $user->password)) {
-                $this->view->alert = [
-                    "message" => "You are logged in.",
-                    "type"    => "success"
-                ];
-            } else {
+            if ($user == false) {
                 $this->view->alert = [
                     "message" => "Username and password do not match.",
+                    "type"    => "danger"
+                ];
+            } else if ($this->security->checkToken() && $this->security->checkHash($password, $user->password)) {
+                // The user is authenticated send them to the homepage
+                $this->response->redirect('index');
+            } else {
+                $this->view->alert = [
+                    "message" => "An error occured while attempting to log in.",
                     "type"    => "danger"
                 ];
             }
