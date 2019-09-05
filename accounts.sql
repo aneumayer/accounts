@@ -22,7 +22,7 @@ DROP TABLE IF EXISTS `folder`;
 CREATE TABLE `folder` (
   `id` smallint(6) NOT NULL AUTO_INCREMENT,
   `user_id` smallint(6) NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `date` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_ECA209CDA76ED395` (`user_id`),

@@ -39,7 +39,6 @@ class SignupController extends \Phalcon\Mvc\Controller
                 
                 } else {
                     // The user is authenticated send them to the homepage
-                    $this->session->set('fullname', $fullname);
                     $this->session->set('user', $user);
                     return $this->response->redirect('');
                 }

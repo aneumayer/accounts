@@ -25,8 +25,6 @@ class LoginController extends \Phalcon\Mvc\Controller
 
             } else {
                 // The user is authenticated send them to the homepage
-                $fullname = $user->first_name . " " . $user->last_name;
-                $this->session->set('fullname', $fullname);
                 $this->session->set('user', $user);
                 return $this->response->redirect('');
             }
