@@ -38,10 +38,9 @@ class Account extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSchema("moneymanager");
         $this->setSource("account");
-        $this->hasMany('id', 'Transaction', 'account_id', ['alias' => 'Transaction']);
-        $this->belongsTo('folder_id', 'Folder', 'id', ['alias' => 'Folder']);
+        $this->hasMany('id', 'Transaction', 'account_id', ['alias' => 'transactions']);
+        $this->belongsTo('folder_id', 'Folder', 'id', ['alias' => 'folder']);
     }
 
     /**

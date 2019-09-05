@@ -44,9 +44,8 @@ class User extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSchema("moneymanager");
         $this->setSource("user");
-        $this->hasMany('id', 'Folder', 'user_id', ['alias' => 'Folder']);
+        $this->hasMany('id', 'Folder', 'user_id', ['alias' => 'folders']);
     }
 
     /**

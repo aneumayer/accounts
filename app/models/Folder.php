@@ -32,10 +32,9 @@ class Folder extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSchema("moneymanager");
         $this->setSource("folder");
-        $this->hasMany('id', 'Account', 'folder_id', ['alias' => 'Account']);
-        $this->belongsTo('user_id', 'User', 'id', ['alias' => 'User']);
+        $this->hasMany('id', 'Account', 'folder_id', ['alias' => 'accounts']);
+        $this->belongsTo('user_id', 'User', 'id', ['alias' => 'user']);
     }
 
     /**

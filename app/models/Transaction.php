@@ -38,9 +38,8 @@ class Transaction extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSchema("moneymanager");
         $this->setSource("transaction");
-        $this->belongsTo('account_id', 'Account', 'id', ['alias' => 'Account']);
+        $this->belongsTo('account_id', 'Account', 'id', ['alias' => 'account']);
     }
 
     /**
