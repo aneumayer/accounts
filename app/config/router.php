@@ -2,7 +2,28 @@
 
 $router = $di->getRouter();
 
-// Define your routes here
+// Registration routes
+$router->add(
+    '/login',
+    [
+        "controller" => "registration",
+        "action"     => "login",
+    ]
+)->setName("registration-login");
+$router->add(
+    '/signup',
+    [
+        "controller" => "registration",
+        "action"     => "signup",
+    ]
+)->setName("registration-signup");
+$router->add(
+    '/logout',
+    [
+        "controller" => "registration",
+        "action"     => "logout",
+    ]
+)->setName("registration-logout");
 
 // Rename an existing folder
 $router->add(
