@@ -5,7 +5,13 @@
 <?php if ($folders): ?>
     <ul class="list-group">
         <?php foreach ($folders as $folder) { ?>
-            <li class="list-group-item"><?= $folder->name ?></li>
+            <li class="list-group-item">
+                    <a href="" class= "align-middle"><?= $folder->name ?></a>
+                    <a href="./folder/delete/<?= $folder->id ?>"
+                        class="btn btn-danger float-right">Delete</a>
+                    <a href="./folder/rename/<?= $folder->id ?>"
+                        class="btn btn-secondary float-right">Rename</a>
+            </li>
         <?php } ?>
     </ul>
 <?php endif; ?>

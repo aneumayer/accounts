@@ -1,0 +1,30 @@
+<main class="login-form">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Delete Folder</div>
+                        <div class="card-body">
+                            <?php $this->flash->output() ?>
+                            <form action="" method="post">
+                                <div class="form-group row">
+                                    <label for="folder_name" class="col-md-4 col-form-label text-md-right">Folder Name</label>
+                                    <div class="col-md-6">
+                                        Are you sure you would like to delete the folder
+                                        <strong><?= $folder_name ?></strong>?
+                                    </div>
+                                </div>
+                                <input type='hidden' name='<?php echo $this->security->getTokenKey() ?>'
+                                    value='<?php echo $this->security->getToken() ?>'/>
+                                <div class="col-md-6 offset-md-4">
+                                    <?=$this->tag->linkTo(['', 'No', 'class' => 'btn btn-danger']);?>
+                                    <button type="submit" name="form-yes" class="btn btn-success">Yes</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
