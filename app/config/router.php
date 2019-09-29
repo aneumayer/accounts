@@ -3,43 +3,13 @@
 $router = $di->getRouter();
 
 // Registration routes
-$router->add(
-    '/login',
-    [
-        "controller" => "registration",
-        "action"     => "login",
-    ]
-)->setName("registration-login");
-$router->add(
-    '/signup',
-    [
-        "controller" => "registration",
-        "action"     => "signup",
-    ]
-)->setName("registration-signup");
-$router->add(
-    '/logout',
-    [
-        "controller" => "registration",
-        "action"     => "logout",
-    ]
-)->setName("registration-logout");
+$router->add('/login', 'Registration::login');
+$router->add('/logout', 'Registration::logout');
+$router->add('/signup', 'Registration::signup');
 
-// Rename an existing folder
-$router->add(
-    '/folder/rename/{id}',
-    [
-        "controller" => "folder",
-        "action"     => "rename",
-    ]
-)->setName("folder-rename");
-// Delete an existing folder
-$router->add(
-    '/folder/delete/{id}',
-    [
-        "controller" => "folder",
-        "action"     => "delete",
-    ]
-)->setName("folder-delete");
+// Folder actions
+$router->add('/folder/view/{id}', 'Folder::view');
+$router->add('/folder/rename/{id}', 'Folder::rename');
+$router->add('/folder/delete/{id}', 'Folder::delete');
 
 $router->handle();

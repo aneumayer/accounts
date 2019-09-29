@@ -3,11 +3,16 @@
     <ul class="list-group">
         <?php foreach ($folders as $folder) { ?>
             <li class="list-group-item">
-                    <a href="" class= "align-middle"><?= $folder->name ?></a>
-                    <a href="./folder/delete/<?= $folder->id ?>"
-                        class="btn btn-danger float-right">Delete</a>
-                    <a href="./folder/rename/<?= $folder->id ?>"
-                        class="btn btn-secondary float-right">Rename</a>
+                    <a href="/folder/view/<?= $folder->id ?>" class= "align-middle">
+                        <?= $folder->name ?>
+                    </a>
+                    <div class="btn-group float-right btn-group-sm"
+                        role="group" aria-label="Basic example">
+                        <a href="./folder/rename/<?= $folder->id ?>"
+                            class="btn btn-secondary">Rename</a>
+                        <a href="./folder/delete/<?= $folder->id ?>"
+                            class="btn btn-danger">Delete</a>
+                    </div>
             </li>
         <?php } ?>
     </ul>

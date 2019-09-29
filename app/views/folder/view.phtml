@@ -1,0 +1,19 @@
+<p><?=$this->tag->linkTo(['account/add', 'Create New Account', 'class' => 'btn btn-success']);?></p>
+<?php if ($account): ?>
+    <ul class="list-group">
+        <?php foreach ($accounts as $account) { ?>
+            <li class="list-group-item">
+                    <a href="/account/view/<?= $account->id ?>" class= "align-middle"><
+                        <?= $account->name ?>
+                    </a>
+                    <div class="btn-group float-right btn-group-sm"
+                        role="group" aria-label="Basic example">
+                        <a href="./account/rename/<?= $account->id ?>"
+                            class="btn btn-secondary">Rename</a>
+                        <a href="./account/delete/<?= $account->id ?>"
+                            class="btn btn-danger">Delete</a>
+                    </div>
+            </li>
+        <?php } ?>
+    </ul>
+<?php endif; ?>

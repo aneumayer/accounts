@@ -55,6 +55,20 @@ class FolderController extends \Phalcon\Mvc\Controller
     }
 
     /**
+     * Form to delete the given folder
+     *
+     * @return void
+     */
+    public function viewAction()
+    {
+        if ($this->folder !== false) {
+            $this->view->folder_name = $this->folder->name;
+        }
+        $this->view->folder = $this->folder;
+        $this->view->accounts = $this->folder->accounts;
+    }
+
+    /**
      * Form to rename the given folder
      *
      * @return void
@@ -91,6 +105,4 @@ class FolderController extends \Phalcon\Mvc\Controller
             return $this->response->redirect('');
         }
     }
-
 }
-
