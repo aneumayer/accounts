@@ -3,13 +3,23 @@
 class FolderController extends \Phalcon\Mvc\Controller
 {
 
+    private $user = null;
+    private $folder = null;
+
     public function initialize()
     {
         if (!$this->session->has('user')) {
             return $this->response->redirect('login');
-        } else {
-            $this->user = $this->session->get('user');
         }
+        // Get the folder being referenced if it belongs to the user
+        $this->user = $this->session->get('user');
+        $this->folder = Folder::findFirst([
+            'conditions' => 'user_id = :user_id: AND id = :folder_id:',
+            'bind'       => [
+                'user_id'   => $this->user->id,
+                'folder_id' => $this->dispatcher->getParam("id")
+            ]
+        ]);
     }
 
     /**
@@ -20,22 +30,11 @@ class FolderController extends \Phalcon\Mvc\Controller
     public function addAction()
     {
         if ($this->request->isPost()) {
-            $folder_name = $this->request->getPost('folder_name');
-
-            // See if a folder with that name already exists
-            $folder = Folder::findFirst([
-                'conditions' => 'user_id = :user_id: AND name = :folder_name:',
-                'bind'       => [
-                    'user_id'     => $this->user->id,
-                    'folder_name' => $folder_name
-                ]
-            ]);
-
             // If there is no folder create it
-            if ($folder === false && $this->security->checkToken()) {
+            if ($this->folder === false && $this->security->checkToken()) {
                 $folder = new Folder();
                 $folder->user_id = $this->user->id;
-                $folder->name    = $folder_name;
+                $folder->name    = $this->folder->name;
                 $folder->date    = new \Phalcon\Db\RawValue("now()");
                 $folder->save();
                 return $this->response->redirect('');
@@ -52,23 +51,13 @@ class FolderController extends \Phalcon\Mvc\Controller
      */
     public function renameAction()
     {
-        // Get the folder being referenced if it belongs to the user
-        $folder_id = $this->dispatcher->getParam("id");
-        $folder = Folder::findFirst([
-            'conditions' => 'user_id = :user_id: AND id = :folder_id:',
-            'bind'       => [
-                'user_id'     => $this->user->id,
-                'folder_id' => $folder_id
-            ]
-        ]);
-
         // If the folder exists and the form has been posted rename the folder
         if ($this->request->isPost() && $this->security->checkToken()) {
-            $folder->name = $this->request->getPost('folder_name');
-            $folder->save();
+            $this->folder->name = $this->request->getPost('folder_name');
+            $this->folder->save();
             return $this->response->redirect('');
-        } elseif ($folder !== false) {
-            $this->view->folder_name = $folder->name;
+        } elseif ($this->folder !== false) {
+            $this->view->folder_name = $this->folder->name;
         } else {
             $this->flash->error("No folder was found");
             return $this->response->redirect('');
@@ -82,21 +71,11 @@ class FolderController extends \Phalcon\Mvc\Controller
      */
     public function deleteAction()
     {
-        // Get the folder being referenced if it belongs to the user
-        $folder_id = $this->dispatcher->getParam("id");
-        $folder = Folder::findFirst([
-            'conditions' => 'user_id = :user_id: AND id = :folder_id:',
-            'bind'       => [
-                'user_id'     => $this->user->id,
-                'folder_id' => $folder_id
-            ]
-        ]);
-
         if ($this->request->isPost() && $this->security->checkToken()) {
-            $folder->delete();
+            $this->folder->delete();
             return $this->response->redirect('');
-        } elseif ($folder !== false) {
-            $this->view->folder_name = $folder->name;
+        } elseif ($this->folder !== false) {
+            $this->view->folder_name = $this->folder->name;
         } else {
             $this->flash->error("No folder was found");
             return $this->response->redirect('');
