@@ -30,12 +30,21 @@ class FolderController extends \Phalcon\Mvc\Controller
      */
     public function addAction()
     {
+        $folder_name = $this->request->getPost('folder_name');
         if ($this->request->isPost()) {
+            // See if a folder with that name already exists
+            $folder = Folder::findFirst([
+                'conditions' => 'user_id = :user_id: AND name = :folder_name:',
+                'bind'       => [
+                    'user_id'     => $this->user->id,
+                    'folder_name' => $folder_name
+                ]
+            ]);
             // If there is no folder create it
-            if ($this->folder === false && $this->security->checkToken()) {
+            if ($folder === false && $this->security->checkToken()) {
                 $folder = new Folder();
                 $folder->user_id = $this->user->id;
-                $folder->name    = $this->folder->name;
+                $folder->name    = $folder_name;
                 $folder->date    = new \Phalcon\Db\RawValue("now()");
                 $folder->save();
                 return $this->response->redirect('');
