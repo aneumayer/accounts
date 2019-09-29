@@ -11,8 +11,9 @@ class FolderController extends \Phalcon\Mvc\Controller
         if (!$this->session->has('user')) {
             return $this->response->redirect('login');
         }
-        // Get the folder being referenced if it belongs to the user
+        // Get the current logged in user
         $this->user = $this->session->get('user');
+        // Get the folder being referenced if it belongs to the user
         $this->folder = Folder::findFirst([
             'conditions' => 'user_id = :user_id: AND id = :folder_id:',
             'bind'       => [
