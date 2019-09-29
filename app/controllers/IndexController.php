@@ -14,7 +14,6 @@ class IndexController extends ControllerBase
 
     public function indexAction()
     {
-        $this->view->fullname = $this->user->first_name . ' ' . $this->user->last_name;
         $this->view->folders  = $this->user->folders;
     }
 

@@ -8,8 +8,7 @@
                             <?php $this->flash->output() ?>
                             <form action="" method="post">
                                 <div class="form-group row">
-                                    <label for="folder_name" class="col-md-4 col-form-label text-md-right">Folder Name</label>
-                                    <div class="col-md-6">
+                                    <div class="col-md-12 text-center">
                                         Are you sure you would like to delete the folder
                                         <strong><?= $folder_name ?></strong>?
                                     </div>
@@ -17,8 +16,8 @@
                                 <input type='hidden' name='<?php echo $this->security->getTokenKey() ?>'
                                     value='<?php echo $this->security->getToken() ?>'/>
                                 <div class="col-md-6 offset-md-4">
-                                    <?=$this->tag->linkTo(['', 'No', 'class' => 'btn btn-danger']);?>
-                                    <button type="submit" name="form-yes" class="btn btn-success">Yes</button>
+                                    <?=$this->tag->linkTo(['', 'Cancel', 'class' => 'btn btn-secondary']);?>
+                                    <button type="submit" name="form-yes" class="btn btn-danger">Delete</button>
                                 </div>
                             </div>
                         </form>

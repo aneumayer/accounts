@@ -1,6 +1,3 @@
-<?php if (isset($fullname)): ?>
-    <p>Welcome to Account Manager <?= $fullname ?>!</p>
-<?php endif; ?>
 <p><?=$this->tag->linkTo(['folder/add', 'Create New Folder', 'class' => 'btn btn-success']);?></p>
 <?php if ($folders): ?>
     <ul class="list-group">
