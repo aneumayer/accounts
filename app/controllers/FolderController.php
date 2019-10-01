@@ -18,7 +18,7 @@ class FolderController extends \Phalcon\Mvc\Controller
             'conditions' => 'user_id = :user_id: AND id = :folder_id:',
             'bind'       => [
                 'user_id'   => $this->user->id,
-                'folder_id' => $this->dispatcher->getParam("id")
+                'folder_id' => $this->dispatcher->getParam("folder_id")
             ]
         ]);
     }
@@ -73,7 +73,7 @@ class FolderController extends \Phalcon\Mvc\Controller
      *
      * @return void
      */
-    public function renameAction()
+    public function editAction()
     {
         // If the folder exists and the form has been posted rename the folder
         if ($this->request->isPost() && $this->security->checkToken()) {

@@ -2,6 +2,8 @@
 
 class AccountController extends \Phalcon\Mvc\Controller
 {
+    private $user = null;
+    private $folder = null;
 
     public function initialize()
     {
@@ -14,8 +16,6 @@ class AccountController extends \Phalcon\Mvc\Controller
 
     public function indexAction()
     {
-
     }
-
 }
 
