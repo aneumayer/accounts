@@ -123,6 +123,6 @@ CREATE TABLE `transactions` (
   KEY (`transaction_type_id`),
   KEY (`transaction_category_id`),
   CONSTRAINT fk_account FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`),
-  CONSTRAINT fk_transaction_type FOREIGN KEY (`transaction_type_id`) REFERENCES `transaction_types` (`id`)
+  CONSTRAINT fk_transaction_type FOREIGN KEY (`transaction_type_id`) REFERENCES `transaction_types` (`id`),
   CONSTRAINT fk_transaction_category FOREIGN KEY (`transaction_category_id`) REFERENCES `transaction_categories` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
