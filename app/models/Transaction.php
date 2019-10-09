@@ -38,7 +38,7 @@ class Transaction extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSource("transaction");
+        $this->setSource("transactions");
         $this->belongsTo('account_id', 'Account', 'id', ['alias' => 'account']);
     }
 
@@ -49,7 +49,7 @@ class Transaction extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'transaction';
+        return 'transactions';
     }
 
     /**

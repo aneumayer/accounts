@@ -14,7 +14,39 @@ class AccountController extends \Phalcon\Mvc\Controller
         }
     }
 
-    public function indexAction()
+    /**
+     * Add a new folder for the logged in user
+     *
+     * @return void
+     */
+    public function addAction()
+    {
+    }
+
+    /**
+     * Form to delete the given folder
+     *
+     * @return void
+     */
+    public function viewAction()
+    {
+    }
+
+    /**
+     * Form to rename the given folder
+     *
+     * @return void
+     */
+    public function editAction()
+    {
+    }
+
+    /**
+     * Form to delete the given folder
+     *
+     * @return void
+     */
+    public function deleteAction()
     {
     }
 }

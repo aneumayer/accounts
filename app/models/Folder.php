@@ -32,7 +32,7 @@ class Folder extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSource("folder");
+        $this->setSource("folders");
         $this->hasMany('id', 'Account', 'folder_id', ['alias' => 'accounts']);
         $this->belongsTo('user_id', 'User', 'id', ['alias' => 'user']);
     }
@@ -44,7 +44,7 @@ class Folder extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'folder';
+        return 'folders';
     }
 
     /**

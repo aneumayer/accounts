@@ -44,7 +44,7 @@ class User extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSource("user");
+        $this->setSource("users");
         $this->hasMany('id', 'Folder', 'user_id', ['alias' => 'folders']);
     }
 
@@ -55,7 +55,7 @@ class User extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'user';
+        return 'users';
     }
 
     /**

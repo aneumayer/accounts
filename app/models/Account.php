@@ -38,7 +38,7 @@ class Account extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSource("account");
+        $this->setSource("accounts");
         $this->hasMany('id', 'Transaction', 'account_id', ['alias' => 'transactions']);
         $this->belongsTo('folder_id', 'Folder', 'id', ['alias' => 'folder']);
     }
@@ -50,7 +50,7 @@ class Account extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'account';
+        return 'accounts';
     }
 
     /**

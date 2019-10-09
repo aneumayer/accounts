@@ -2,8 +2,8 @@
 -- Table structure for table `account`
 --
 
-DROP TABLE IF EXISTS `account`;
-CREATE TABLE `account` (
+DROP TABLE IF EXISTS `accounts`;
+CREATE TABLE `accounts` (
   `id` smallint(6) NOT NULL AUTO_INCREMENT,
   `folder_id` smallint(6) NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -18,8 +18,8 @@ CREATE TABLE `account` (
 -- Table structure for table `folder`
 --
 
-DROP TABLE IF EXISTS `folder`;
-CREATE TABLE `folder` (
+DROP TABLE IF EXISTS `folders`;
+CREATE TABLE `folders` (
   `id` smallint(6) NOT NULL AUTO_INCREMENT,
   `user_id` smallint(6) NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -33,8 +33,8 @@ CREATE TABLE `folder` (
 -- Table structure for table `transaction`
 --
 
-DROP TABLE IF EXISTS `transaction`;
-CREATE TABLE `transaction` (
+DROP TABLE IF EXISTS `transactions`;
+CREATE TABLE `transactions` (
   `id` smallint(6) NOT NULL AUTO_INCREMENT,
   `account_id` smallint(6) NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -49,8 +49,8 @@ CREATE TABLE `transaction` (
 -- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user` (
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
   `id` smallint(6) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `last_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
