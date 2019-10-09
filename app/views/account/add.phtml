@@ -1,0 +1,37 @@
+<main class="login-form">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Create Account</div>
+                        <div class="card-body">
+                            <?php $this->flash->output() ?>
+                            <form action="" method="post">
+                                <div class="form-group row">
+                                    <label for="account_name" class="col-md-4 col-form-label text-md-right">Name</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="folder_name" class="form-control" name="folder_name" required autofocus>
+                                    </div>
+                                    <label for="amount" class="col-md-4 col-form-label text-md-right">Amount</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="folder_name" class="form-control" name="folder_name" required>
+                                    </div>
+                                    <label for="type" class="col-md-4 col-form-label text-md-right">Type</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="folder_name" class="form-control" name="folder_name" required>
+                                    </div>
+                                </div>
+                                <input type='hidden' name='<?php echo $this->security->getTokenKey() ?>'
+                                    value='<?php echo $this->security->getToken() ?>'/>
+                                <div class="col-md-6 offset-md-4">
+                                    <?=$this->tag->linkTo(['', 'Cancel', 'class' => 'btn btn-secondary']);?>
+                                    <button type="submit" class="btn btn-primary">Create</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
